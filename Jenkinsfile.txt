@@ -13,14 +13,14 @@ stage('Clone') {
 }
 stage('Build') {
    steps {
-    sh "pip install -r requirments.txt"
+    sh 'pip3 install -r requirments.txt'
     }  
 }
 
 stage('run') {
    steps {
-    sh "python3 untitled1.py"
-    sh "python3 untitled5.py"
+    sh 'python3 untitled1.py'
+    sh 'python3 untitled5.py'
 
     }  
 }
