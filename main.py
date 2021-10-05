@@ -4,6 +4,10 @@ Created on Sun Oct  3 14:00:02 2021
 
 @author: get-a
 """
+
+
+# pip install -r reuirments.txt
+
 from flask import Flask
 
 import feedparser
