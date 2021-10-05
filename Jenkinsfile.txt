@@ -4,29 +4,25 @@ agent any
 
 stages{
 
-stage('Clone){
- steps{
+stage('Clone) {
+ steps {
         git branch:'master',url:'https://github.com/noorkhamaisi/RSS-Feed.git'
     }  
 }
-stage('Build){
-   steps{
+stage('Build) {
+   steps {
     sh "pip install -r requirments.txt"
     }  
 }
 
-stage('run){
-   steps{
+stage('run) {
+   steps {
     sh "python3 untitled1.py"
     sh "python3 untitled5.py"
 
     }  
 }
 
-
 }
-
-
-
 
 }
