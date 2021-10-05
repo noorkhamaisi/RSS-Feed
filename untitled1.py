@@ -40,7 +40,7 @@ df = pd.DataFrame(news_items,columns=['title','description','link','pubDate'])
 df.head()
 html = df.to_html()
 
-#print(html)
+print(html)
 
 text_file = open(path+"\\"+"templates"+"\\"+"index.html", "w", encoding='utf-8')
 text_file.write(html)
