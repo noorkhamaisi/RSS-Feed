@@ -6,9 +6,9 @@ stages{
 
 stage('Clone') {
  steps {
-        sh 'echo"hhhh"'
+        
         git 'https://github.com/noorkhamaisi/RSS-Feed.git'
-        sh 'echo"ggggggggggggggggggggghhhh"'
+       
     }  
 }
 stage('Build') {
