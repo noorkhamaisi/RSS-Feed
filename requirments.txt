@@ -1,3 +1,4 @@
 flask
 feedparser
 pretty-html-table
+textblob

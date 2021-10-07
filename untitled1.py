@@ -20,12 +20,12 @@ path = os.getcwd() #Gets the current working directory
 
 #soup.prettify()
 
-#print (soup)
+
 items = soup.findAll('item')
 
 print("hhhhhhhhhhhhhhhhhh")
 
-print(items[0])
+#print(items[0])
 
 print("--------------------")
 

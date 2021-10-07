@@ -3,6 +3,7 @@ import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 from pretty_html_table import build_table
+from langdetect import detect
 #enter URL
 url = "http://www.ynet.co.il/Integration/StoryRss2.xml"
 
@@ -15,12 +16,15 @@ soup = BeautifulSoup(resp.content, features="xml")
 
 
 items = soup.findAll('item')
-
 news_items = []
 for item in items:
     news_item = {}
+   
     news_item['title'] = item.title.text
-    news_item['description'] = item.description.text
+   # news_item['description'] = item.description.text
+   
+    d=item.description.text.split()[25:]
+    news_item['description']=" ".join(d)
     news_item['link'] = item.link.text
     news_item['pubDate'] = item.pubDate.text
     news_items.append(news_item)
