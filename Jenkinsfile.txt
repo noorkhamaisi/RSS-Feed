@@ -15,8 +15,7 @@ stage('Build') {
    steps {
     sh """
     pwd
-    sudo -s
-    apt install python3-pip -y
+    sudo apt install python3-pip -y
     pwd
     pip3 install -r requirements.txt
     """
