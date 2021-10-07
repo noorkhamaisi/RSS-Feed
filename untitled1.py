@@ -18,10 +18,30 @@ path = os.getcwd() #Gets the current working directory
 
 #print(os.chdir("..")) #Go up one directory from working directory
 
-#print(soup.prettify())
+#soup.prettify()
 
-
+#print (soup)
 items = soup.findAll('item')
+
+print("hhhhhhhhhhhhhhhhhh")
+
+print(items[0])
+
+print("--------------------")
+
+
+
+print("--------------------")
+print(items[0].description)
+
+print("--------------------")
+print(items[0].title)
+
+print("--------------------")
+print(items[0].link)
+
+print("--------------------")
+print(items[0].pubDate)
 
 news_items = []
 for item in items:
@@ -37,9 +57,12 @@ for item in items:
     
     
 df = pd.DataFrame(news_items,columns=['title','description','link','pubDate'])
-df.head()
+
+
+
 html = df.to_html()
 
+print("--------------------------------------------------------")
 print(html)
 
 text_file = open(path+"\\"+"templates"+"\\"+"index.html", "w", encoding='utf-8')

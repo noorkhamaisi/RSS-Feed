@@ -2,6 +2,7 @@
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
+from pretty_html_table import build_table
 #enter URL
 url = "http://www.ynet.co.il/Integration/StoryRss2.xml"
 
@@ -29,10 +30,27 @@ for item in items:
     
     
 df = pd.DataFrame(news_items,columns=['title','description','link','pubDate'])
-df.head()
-df.to_csv('BBCdata1.csv',index=False, encoding = 'utf-8')
+
+df.to_csv('BBCdata1.csv',index=True, encoding = 'utf-8')
 
 a = pd.read_csv("BBCdata1.csv", encoding = 'utf-8')
 
 a.to_html("Tableeee.html")
 
+
+df = pd.read_csv('BBCdata1.csv', encoding = 'utf-8')
+#html_table_blue_light = build_table(df, 'blue_light')
+
+html_table_blue_light = build_table(df, 'yellow_dark', font_size='medium'
+                        , font_family='Open Sans, sans-serif'
+                        , text_align='left'
+                        , width='auto'
+                        , index=False
+			, even_color='black'
+			, even_bg_color='white'
+                        )
+
+# Save to html file
+with open('pretty_table.html', 'w', encoding = 'utf-8') as f:
+    f.write(html_table_blue_light)
+  
