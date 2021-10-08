@@ -22,8 +22,8 @@ stage('Build') {
 
 stage('run') {
    steps {
-    sh 'python3 untitled1.py'
-    sh 'python3 untitled5.py'
+    sh 'python3 main.py'
+    
 
     }  
 }

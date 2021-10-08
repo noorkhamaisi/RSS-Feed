@@ -2,8 +2,11 @@
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
-from pretty_html_table import build_table
-from langdetect import detect
+
+import os
+import os.path
+
+#from IPython.display import HTML
 #enter URL
 url = "http://www.ynet.co.il/Integration/StoryRss2.xml"
 
@@ -11,50 +14,57 @@ resp = requests.get(url)
 
 soup = BeautifulSoup(resp.content, features="xml")
 
+path = os.getcwd() #Gets the current working directory
 
-#print(soup.prettify())
+#print(os.chdir("..")) #Go up one directory from working directory
+
+#soup.prettify()
 
 
 items = soup.findAll('item')
+
+print("hhhhhhhhhhhhhhhhhh")
+
+#print(items[0])
+
+print("--------------------")
+
+
+
+print("--------------------")
+print(items[0].description)
+
+print("--------------------")
+print(items[0].title)
+
+print("--------------------")
+print(items[0].link)
+
+print("--------------------")
+print(items[0].pubDate)
+
 news_items = []
 for item in items:
     news_item = {}
-   
     news_item['title'] = item.title.text
-   # news_item['description'] = item.description.text
-   
-    d=item.description.text.split()[25:]
-    news_item['description']=" ".join(d)
+    news_item['description'] = item.description
     news_item['link'] = item.link.text
     news_item['pubDate'] = item.pubDate.text
     news_items.append(news_item)
-   # print(news_item)
+  #  print(news_item)
    # break
     
     
     
 df = pd.DataFrame(news_items,columns=['title','description','link','pubDate'])
 
-df.to_csv('BBCdata1.csv',index=True, encoding = 'utf-8')
-
-a = pd.read_csv("BBCdata1.csv", encoding = 'utf-8')
-
-a.to_html("Tableeee.html")
 
 
-df = pd.read_csv('BBCdata1.csv', encoding = 'utf-8')
-#html_table_blue_light = build_table(df, 'blue_light')
+html = df.to_html()
 
-html_table_blue_light = build_table(df, 'yellow_dark', font_size='medium'
-                        , font_family='Open Sans, sans-serif'
-                        , text_align='left'
-                        , width='auto'
-                        , index=False
-			, even_color='black'
-			, even_bg_color='white'
-                        )
+print("--------------------------------------------------------")
+print(html)
 
-# Save to html file
-with open('pretty_table.html', 'w', encoding = 'utf-8') as f:
-    f.write(html_table_blue_light)
-  
+text_file = open(path+"\\"+"templates"+"\\"+"index.html", "w", encoding='utf-8')
+text_file.write(html)
+text_file.close()
