@@ -14,7 +14,7 @@ stage('Clone') {
 stage('Build') {
    steps {
     sh """
-   
+   	
     pip3 install -r requirements.txt
     """
     }  
@@ -23,6 +23,8 @@ stage('Build') {
 stage('run') {
    steps {
     sh 'python3 main.py'
+    
+    sh slackSend channel: 'jenkins', message: 'Hey From Slack -- IT WORKS '
     
 
     }  
