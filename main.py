@@ -38,11 +38,11 @@ for item in items:
     
 df = pd.DataFrame(news_items,columns=['title','description','link','pubDate'])
 
-df.to_csv('BBCdata1.csv',index=False, encoding = 'utf-8')
+df.to_csv('data1.csv',index=False, encoding = 'utf-8')
 
-a = pd.read_csv("BBCdata1.csv", encoding = 'utf-8')
+a = pd.read_csv("data1.csv", encoding = 'utf-8')
 
-a.to_html("Tableeee.html")
+a.to_html("Table.html")
 
 
 df = pd.read_csv('BBCdata1.csv', encoding = 'utf-8')
